@@ -1,13 +1,13 @@
 class BuyoutPage < SitePrism::Page
   #set_url "/buy/ticketpage.aspx?tsgid=12251935&qty=1&byp=sc"
-  set_url "https://qa.www.seatwave.com/Checkout?tsgid=12251926&qty=1"
+  set_url "/Checkout?tsgid=12251926&qty=1"
 
   element :numberoftickets, "#SelectedQuantity"
 
   element :email1, "#UserEmail"
   element :email2, "#ConfirmEmail"
   element :title, "#Title"
-  elements :titles, ".frm75 div.frm50 div.swDropDown ul li"
+  elements :titles, "#Title option"
   element :firstname, "#FirstName"
 
   element :lastname, "#LastName"

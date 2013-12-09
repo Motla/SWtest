@@ -11,9 +11,9 @@ Feature: BUY - guess user
 
   Scenario: Maestro
     Then I can pay by Maestro
-#    And 3D secure should fire
-
-  Scenario: Paypal
+###    And 3D secure should fire
+#
+ Scenario: Paypal
     Then I can pay by Paypal
 
   Scenario: 3dsecure

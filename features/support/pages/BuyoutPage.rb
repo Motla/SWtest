@@ -38,10 +38,12 @@ class BuyoutPage < SitePrism::Page
   element :ccstartyear, "#PaymentDetails_StartYear"
   element :issuenumber, "#PaymentDetails_IssueNumber"
 
+  element :enterbillingaddressmanually, "#newBillingAddress .enterAddress a"
+  element :billingaddress, "#PaymentDetails_LineOne"
+  element :billingtown, "#PaymentDetails_Town"
+  element :billingpostcode, "#PaymentDetails_Postcode"
+
   element :tandc, "label[for='AgreesToTermsAndConditions']"
   element :tandc, "label[for='AgreesToTermsAndConditions']"
-  #element :tandc, "#AgreesToTermsAndConditions"
-  #element :tandc, ".TsAndCs .swCheckBox"
-  #element :tandc, "I agree to the seatwave"
   element :buy, "#buyTickets"
 end

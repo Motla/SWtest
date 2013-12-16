@@ -7,8 +7,9 @@ require 'site_prism'
 Capybara.run_server = false
 Capybara.default_driver = :selenium
 Capybara.app_host = 'http://qa.www.seatwave.com'
-#Capybara.ignore_hidden_elements = false
+Capybara.ignore_hidden_elements = true
 Capybara.default_wait_time = 15
+Capybara.match = :first
 
 
 

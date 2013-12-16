@@ -47,6 +47,21 @@ Then(/^I can pay by Maestro$/) do
 
   find('.fb#modal-content')
 end
+
+Then(/^I can pay by Amex$/) do
+  @buyout_page.amex.click
+  @buyout_page.nameoncard.set 'Arnaud Lamotte'
+  @buyout_page.cardnumber.set '3714 496353 98431'
+  @buyout_page.ccmonth.select '01'
+  @buyout_page.ccyear.select '2015'
+  @buyout_page.securitycode.set '1111'
+
+  @buyout_page.tandc.click
+  @buyout_page.buy.click
+
+  find('.fb#modal-content')
+end
+
 Then(/^I can pay by Paypal$/) do
   @buyout_page.paypal.click
   @buyout_page.tandc.click
@@ -99,13 +114,7 @@ end
 #  end
 #end
 
-When(/^I buy  collectfrom tickets$/) do
-  @performance_page.moreoptions.click
-  @performance_page.readytocollect.click
-  #@performance_page.qtys[1].select '2'
-  #@performance_page.buys[0].click
-  @performance_page.buys.size.should == 6
-end
+
 
 Then(/^I go to the buyout page$/) do
   @buyout_page = BuyoutPage.new
@@ -121,15 +130,68 @@ When(/^fill my personal details$/) do
   @buyout_page.phone.set'079999999999'
 end
 When(/^my billing details$/) do
+  @buyout_page.enterbillingaddressmanually.click
   @buyout_page.billingaddress.set '120 Moorgate'
   @buyout_page.billingtown.set 'London'
   @buyout_page.billingpostcode.set 'EC2M 6UR'
 end
-Then(/^i buy  collectfrom tickets$/) do
+
+When(/^I buy  collectfrom tickets$/) do
   @performance_page.moreoptions.click
   @performance_page.readytocollect.click
-  #@performance_page.qtys[1].select '2'
-  #@performance_page.buys[0].click
-  @performance_page.buys.size.should == 1
-  #@performance_page.buys[0].click
+  find(".btn.buy").click
+end
+When(/^I buy  Etickets tickets$/) do
+  @performance_page.moreoptions.click
+  @performance_page.readytodownload.click
+  find(".btn.buy").click
+end
+
+Given(/^I am on the partners website homepage$/) do
+  visit('https://qa.partners.seatwave.com')
+end
+When(/^I login$/) do
+  fill_in('Login_Email', :with => 'matte@seatwave.com')
+  fill_in('Login_Password', :with => 'matte')
+  click_button('LoginButton')
+end
+#Then(/^I can list a ticket$/) do
+#  find('.btn.sell').click
+#  find('#ctl00_ContentPlaceHolder1_pPerformanceSelect_pParentGenreSelect_drpGenre').select('Concerts')
+#end
+When(/^I buy  ReadyforDelivery tickets$/) do
+  @performance_page.moreoptions.click
+  @performance_page.readyfordelivery.click
+  find(".btn.buy").click
+end
+When(/^my delivery details$/) do
+  @buyout_page.enteraddressmanually.click
+  @buyout_page.deliveryaddress.set '120 Moorgate'
+  @buyout_page.deliverytown.set 'London'
+  @buyout_page.deliverypostcode.set 'EC2M 6UR'
+end
+Given(/^I am on the  homepage$/) do
+  visit('http://qa.www.seatwave.com')
+end
+Then(/^I can list a ticket$/) do
+  find('.btn.sell').click
+  fill_in('SearchTerm', :with => 'Testing Only')
+  click_button('PerformSearch')
+  find(".results-list .date a").click
+  find(".results-list .selllink a").click
+  find('#SelectedTicketCount').select('2')
+  find('#SelectedTicketTypeId').select('Seated')
+  find("input[id='FaceValue']").set('1.10')
+  find('#TicketFormat').select('Paper')
+  find('.next-step').click
+  find("label[for='FixedPrice']").click
+  find("input[id='PricePerTicket']").set('10')
+  find('.next-step').click
+  find('#ReturningUserViewModel_Email').set("arnaud.lamotte@seatwave.com")
+  find('#ReturningUserViewModel_Password').set("isabelle")
+  find('#returningLoginSubmit').click
+  find('.next-step').click
+  find("label[for='TsAndCs']").click
+  find('.next-step').click
+  find('#performanceData').visible?
 end

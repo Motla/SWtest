@@ -27,6 +27,7 @@ class BuyoutPage < SitePrism::Page
   element :visa, ".Visa label"
   element :mastercard, ".Mastercard label"
   element :maestro, ".Maestro label"
+  element :amex, ".AmericanExpress label"
   element :paypal, ".PaypalPayment label"
   element :nameoncard, "#PaymentDetails_NameOnCard"
   element :cardnumber, "#PaymentDetails_CardNumber"
@@ -38,7 +39,7 @@ class BuyoutPage < SitePrism::Page
   element :ccstartyear, "#PaymentDetails_StartYear"
   element :issuenumber, "#PaymentDetails_IssueNumber"
 
-  element :enterbillingaddressmanually, "#newBillingAddress .enterAddress a"
+  element :enterbillingaddressmanually, "#billingAddress .enterAddress a"
   element :billingaddress, "#PaymentDetails_LineOne"
   element :billingtown, "#PaymentDetails_Town"
   element :billingpostcode, "#PaymentDetails_Postcode"

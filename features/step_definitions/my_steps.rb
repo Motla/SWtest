@@ -155,10 +155,7 @@ When(/^I login$/) do
   fill_in('Login_Password', :with => 'matte')
   click_button('LoginButton')
 end
-#Then(/^I can list a ticket$/) do
-#  find('.btn.sell').click
-#  find('#ctl00_ContentPlaceHolder1_pPerformanceSelect_pParentGenreSelect_drpGenre').select('Concerts')
-#end
+
 When(/^I buy  ReadyforDelivery tickets$/) do
   @performance_page.moreoptions.click
   @performance_page.readyfordelivery.click
@@ -181,6 +178,8 @@ Then(/^I can list a ticket$/) do
   find(".results-list .selllink a").click
   find('#SelectedTicketCount').select('2')
   find('#SelectedTicketTypeId').select('Seated')
+  find('#Block').set('a1')
+  find('#Row').set('1a')
   find("input[id='FaceValue']").set('1.10')
   find('#TicketFormat').select('Paper')
   find('.next-step').click

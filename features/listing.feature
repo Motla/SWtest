@@ -1,4 +1,4 @@
-Feature: Listing - guess user
+Feature: Listing - returning user
 
   Background:
     Given I am on the  homepage

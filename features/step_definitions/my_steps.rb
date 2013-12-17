@@ -130,7 +130,10 @@ When(/^fill my personal details$/) do
   @buyout_page.phone.set'079999999999'
 end
 When(/^my billing details$/) do
-  @buyout_page.enterbillingaddressmanually.click
+  if @buyout_page.current_url.include? "www.seatwave.com"
+    @buyout_page.enterbillingaddressmanually.click
+  end
+ #@buyout_page.enterbillingaddressmanually.click
   @buyout_page.billingaddress.set '120 Moorgate'
   @buyout_page.billingtown.set 'London'
   @buyout_page.billingpostcode.set 'EC2M 6UR'
@@ -162,7 +165,10 @@ When(/^I buy  ReadyforDelivery tickets$/) do
   find(".btn.buy").click
 end
 When(/^my delivery details$/) do
-  @buyout_page.enteraddressmanually.click
+  if @buyout_page.current_url.include? "www.seatwave.com"
+     @buyout_page.enteraddressmanually.click
+    end
+  #@buyout_page.enteraddressmanually.click
   @buyout_page.deliveryaddress.set '120 Moorgate'
   @buyout_page.deliverytown.set 'London'
   @buyout_page.deliverypostcode.set 'EC2M 6UR'

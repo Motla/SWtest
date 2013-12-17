@@ -1,7 +1,9 @@
 class PerformancePage < SitePrism::Page
 
-  #set_url "/performance/639957"
+
   set_url "/testing-only-tickets/the-test-venue-tickets/31-december-2015/perf/780623"
+
+  set_url "http://qa.www.seatwave.com/testing-only-tickets/the-test-venue-tickets/31-december-2015/perf/780623"
 
   element :numberoftickets, "#Filters_SelectedQuantity"
   elements :dates, "#venuePerformances option"

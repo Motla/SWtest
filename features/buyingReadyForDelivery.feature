@@ -16,5 +16,8 @@ Feature: Buying ReadyForDelivery
   Scenario: Collectfrom - Paypal
     Then I can pay by Paypal
 
-  Scenario: Collectfrom - Paypal
+  Scenario: Collectfrom - Maestro
     Then I can pay by Maestro
+
+  Scenario: Eticket - Amex
+    Then I can pay by Amex
